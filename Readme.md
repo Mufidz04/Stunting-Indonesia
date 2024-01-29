@@ -21,7 +21,11 @@
 
 ## Business Understanding
 
-Hakikatnya kita sebagai anak muda memerlukan pengetahuan lebih faktor apa saja yang menyebabkan terjadinya stunting pada anak untuk bekal di kehidupan berikutnya. Anak muda zaman sekarang atau kita bisa sebut saja dia Gen-Z masih clueless tentang stunting, mungkin saja beberapa mulai sadar akan stunting dikarenakan sedang ramai dibicarakan di televisi. Hal ini mendorong penulis untuk membantu para calon bapak nanti untuk memperhatikan gizi pada buah hati yang meliputi faktor apa saja yang mempengaruhi anak menjadi stunting sehingga kita dapat menjadi lebih awarness terhadap faktor tersebut serta membantu target angka prevalensi menjadi turun 3,8% per tahunnya.
+Hakikatnya, generasi muda membutuhkan pemahaman mendalam mengenai faktor-faktor yang dapat menyebabkan *stunting* pada anak sebagai bekal penting dalam menghadapi kehidupan mendatang. Generasi Z, sering disebut sebagai anak-anak muda, masih memiliki pengetahuan terbatas mengenai *stunting*. Beberapa mulai menyadari masalah ini karena menjadi perbincangan umum di televisi. Hal ini menjadi motivasi bagi penulis untuk membantu calon orang tua agar lebih memperhatikan aspek gizi anak-anak mereka, termasuk pemahaman tentang faktor-faktor yang dapat memicu *stunting*.
+
+Harapannya dengan adanya pemahaman faktor - faktor tersebut dapat meningkatkan kesejahteraan masyarakat secara menyeluruh dan dapat mengurangi angka kasus *stunting* di kalanagan anak - anak. Hal ini akan memberikan dampak positif pada generasi masa depan untuk meningkatkan kualitas hidup dan membentuk masyarakat yang lebih sehat secara keseluruhan. Selain itu juga, mengurangi tingkat *stunting* dapat berkontribusi pada penurunan beban kesehatan masyarakat dan peningkatan produktivitas di masa mendatang. 
+
+Pemanfaatan teknologi pembelajaran mesin menjadi bagian penting dari solusi ini. Dengan menerapkan teknologi ini, kita dapat menganalisis data yang kompleks terkait stunting pada anak. Pembelajaran mesin membantu dalam memprediksi risiko stunting dan menciptakan sistem yang mendukung orang tua serta tenaga kesehatan. Semua ini diharapkan tidak hanya meningkatkan pemahaman, tetapi juga membantu mengurangi kasus *stunting* sebesar 3,8% setiap tahunnya.
 
 ### Problem Statements
 
