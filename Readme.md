@@ -73,6 +73,7 @@ data = pd.read_csv('Nutritions.csv')
 Hasil dari pemrosesan code diatas dapat dilihat pada Gambar 1
 ![Gambar 1](assets/Gambar1.png)
 Gambar 1. Data Loading
+
 Pada Gambar 1 disajikan data yang berisikan dataset asli sebelum dilakukan tahap pengolahan data
 
 TODO:Revision Data Understanding, Data Preparation, Modeling, Evaluation, Struktur laporan dan penulisan.
