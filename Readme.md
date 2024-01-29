@@ -29,17 +29,21 @@ Pemanfaatan teknologi pembelajaran mesin menjadi bagian penting dari solusi ini.
 
 ### Problem Statements
 
-Berdasarkan permasalahan tersebut saya menjadi bertanya - tanya bahwa seringkali mendengar ketika ibu hamil makannya harus dijaga, makanannya harus bergizi, dan terkadang karena hal itu pula si ibu pun harus menurutinya. Nah dari situ saya coba merumuskan beberapa pertanyaan diantara lain:
-- Apa saja faktor yang berpengaruh terhadap kasus stunting?
-- Faktor mana saja yang menyebabkan kemungkinan tertinggi dalam kasus stunting?
-- Apakah ada suatu cara untuk memprediksi dan mencegah stunting pada anak?
+Dengan latar belakang permasalahan yang diungkapkan, muncul pertanyaan-pertanyaan yang relevan terkait aspek penting dalam perawatan kehamilan, terutama berkaitan dengan pengaturan pola makan ibu hamil untuk memastikan asupan gizi yang optimal. Beberapa pertanyaan yang diajukan untuk merumuskan pemahaman lebih mendalam melibatkan:
+> Bagaimana hubungan antara pola makan seorang ibu hamil dan risiko stunting pada anak yang dikandungnya?
+
+> Apakah ada korelasi antara faktor-faktor terkait gizi dalam makanan ibu hamil dan kemungkinan terjadinya stunting pada anak?
+
+> Adakah metode atau langkah-langkah yang dapat diambil untuk memastikan pemenuhan gizi yang optimal selama kehamilan, dengan tujuan mencegah kasus stunting pada anak yang dilahirkan?
 
 ### Goals
 
-Untuk menjawab dari permasalahan sebelumnya, saya mencoba membuat predictive analysis dengan tujuan atau goals sebagai berikut:
-- Mengetahui faktor apa saja yang memiliki korelasi terhadap kasus stunting
-- Mengetahui faktor yang memiliki korelasi paling tinggi terhadap kasus stunting 
-- Membuat model machine learning yang dapat memprediksi apakah anak nantinya mengidap stunting dengan seakurat mungkin berdasarkan fitur - fitur yang ada 
+Untuk menjawab dari permasalahan sebelumnya, penulis mencoba membuat predictive analysis dengan tujuan atau goals sebagai berikut:
+> Mengidentifikasi dan menganalisis hubungan antara pola makan ibu hamil dengan risiko stunting pada anak yang sedang dikandungnya
+
+> Mengetahui korelasi antara faktor-faktor gizi dalam makanan ibu hamil dan potensi terjadinya stunting pada anak yang dilahirkan.
+
+> Membuat model predictive analysis yang dapat memprediksi tingkat risiko stunting pada anak berdasarkan faktor-faktor gizi dalam makanan ibu hamil, dengan tingkat akurasi yang tinggi.
 
 ## Data Understanding
 Pada kasus ini saya mengarahkan langsung kepada dataset resmi keluaran dari UNICEF yang berisikan data - data yang beririsan dengan kasus stunting. [UNICEF](https://sdmx.data.unicef.org/databrowser/index.html?q=UNICEF:NUTRITION(1.0)).
