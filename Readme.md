@@ -62,92 +62,92 @@ Didalamnya banyak sekali variabel - variabel yang bisa dipakai namun saya hanya 
 Dikarenakan hasil dataset yang didapatkan berisikan data yang raw atau kotor. Kita harus mempersiapkan terlebih dahulu agar dataset yang akan kita pakai sudah bersih tahap ini adalah mengolah data yang kotor menjadi bersih.
 
 - Sebelumnya kita akan memuat dataset yang sudah kita peroleh menggunakkan library pandas
-![Data Loading](DataLoading.png)
+![Data Loading](assets/DataLoading.png)
 - Setelah dimuat maka terlihat bahwa data yang diperoleh dari UNICEF masih berbentuk kondisi yang tidak kita inginkan, selanjutnya maka kita coba telusuri dengan menggunakan fungsi info().
-![Data Info](DataInfo.png)
+![Data Info](assets/DataInfo.png)
 - Dikarenakan banyaknya feature variabel maka sesuai dengan kondisi di atas, kita hanya akan menggunakan variabel tertentu agar scope yang kita telusuri sesuai dan tida melabar kemana - mana. Dalam penentuan variabel yang akan diekstraksi, saya menggunakan fungsi parameter dari pandas yaitu chunksize yang merupakan kondisi yang paling cocok dari kasus ini dikarenakan dataset kita yang cukup besar dan complex sehingga kita memerlukan potongan - potongan kecil untuk dalam pemrosesan.
-![Chunk](Chunk.png)
+![Chunk](assets/Chunk.png)
 - Setelah di define menggunakan chunk, selanjutnya kita akan mencoba mengambil variabel yang akan kita pakai sesuai dengan diatas.
-![Ekstraksi Kolom](EkstraksiKolom.png)
+![Ekstraksi Kolom](assets/EkstraksiKolom.png)
 - Tidak lupa juga karena penggambaran data seperti yang dilihat pada Data Loading sangat berantakan, maka disini saya juga mencoba untuk string manipulation agar terlihat agar rapih. Prosesnya seperti berikut ini
-![String Manipulation](StringManipulation.png)
+![String Manipulation](assets/StringManipulation.png)
 - Maka akan hasilnya seperti ini, terlihat bukan datanya lebih readable?
-![Result String](ResultString.png)
+![Result String](assets/ResultString.png)
 - Karena data setelah ekstraksi masih dalam bentuk string, sekarang kita rubah menjadi dataframe agar terlihat perbedaannya
-![DataFrame](DataFrame.png)
+![DataFrame](assets/DataFrame.png)
 - Setelah datanya mudah dibaca, sekarang saatnya kita memeriksa apakah dataset yang telah kita bersihkan memiliki nilai duplikat dengan menggunakan fungsi df.duplicated().sum(). Setelah itu melihat apakah data memiliki nilai null dengan fungsi isnull().
-![Cek Dataset](CekDataset.png)
-![Cek Info Data](CekInfoData.png)
+![Cek Dataset](assets/CekDataset.png)
+![Cek Info Data](assets/CekInfoData.png)
 - Berikutnya, kita akan menelusuri lebih jauh terhadap variabel Indicator. Dikarenakan banyak juga feature yang akan diambil maka saya memutuskan untuk mengambil variabel berelevansi atas literatur yang telah dilampirkan pada data diatas. Selebihnya bisa cek pada notebook.
-![Indicator Value](DataIndicator.png)
+![Indicator Value](assets/DataIndicator.png)
 - Selanjutnya kita coba seleksi fitur variabel yang ada pada di Indicator.
-![Fitur Seleksi Indicator](SeleksiFitur.png)
+![Fitur Seleksi Indicator](assets/SeleksiFitur.png)
 - Setelah kita coba seleksi fitur, sekarang kita akan coba gabungkan beberapa tabel lainnya ke dalam dataframe baru.
-![Gabungan DataFrame](GabunganDF.png)
-![Nutrisi Indonesia](NutriIndo.png)
+![Gabungan DataFrame](assets/GabunganDF.png)
+![Nutrisi Indonesia](assets/NutriIndo.png)
 - Berikutnya, mencari informasi tentang dataset mengenai jumlah baris data,kolom data terhadap DataFrame baru. Saya menggunakan fungsi shape().
-![Jumlah Data](JumlahData.png)
+![Jumlah Data](assets/JumlahData.png)
 - Selanjutnya kita coba manipulasi string kembali terhadap variabel - variabel diatas agar mudah dibaca.
 Residence:
-![Residence](Residence.png)
+![Residence](assets/Residence.png)
 Education:
-![Education](Pendidikan.png)
+![Education](assets/Pendidikan.png)
 Poverty:
-![Poverty](Kekayaan.png)
-![Datafrane Info Terbaru](DataInfoNew.png)
+![Poverty](assets/Kekayaan.png)
+![Datafrane Info Terbaru](assets/DataInfoNew.png)
 
 #### Exploratory Data Analysis and Vizualizations
 
 Pada tahap ini saya mencoba mencari tahu apakah tedapat Outliers pada data yang setelah melakukan aksi yang diatas, serta mencari korelasi yang antar variable, dan juga melakukan coba analisis sederhana yang mencakup Univariate, Bivariate dan Multivariate. 
 
 Sebelum masuk lebih jauh, kita akan mencoba untuk melihat persebaran datanya terlebih dahulu. Dari hasil yang bisa didapatkan bahwa data yang diperoleh pendistribusiannya tidak normal lebih mengarah Right-Skewed or Positive-Skewed. 
-![Distribusi Data](DistribusiData.png)
+![Distribusi Data](assets/DistribusiData.png)
 Dari gambar diatas didapati bahwa tidak adanya outliers yang menandakan bahwa data kita tidak masuk ke step khusus untuk menangani outliers. Dilakukan juga Univariate analysis terhadap feature yang ada lebih lengkapnya bisa di cek pada collab EDA
 
 Selanjutnya setelah diketahui distribusi data tidak adanya outliers, maka kita bisa lanjutkan step berikutnya yaitu Bivariate analysis Indicator terhadap Maternal Education. Fokus utamanya terhadap kasus stunting.
-![HeatMap Pendidikan](HeatMapPendidikan.png)
+![HeatMap Pendidikan](assets/HeatMapPendidikan.png)
 Diketahui dari heatmap tersebut bahwa korelasi kasus stunting dipengaruhi oleh beberapa faktor diantaranya Underweight, Wasting, Severve_Wasting, Overweight. Selain itu pemberian ASI pada rentang waktu 12 - 15 Bulan ke bayi mempunyai pengaruh juga terhadap Stunting. Turut serta bepengaruh juga terhadap ASI yang diberikan oleh batita hal ini bisa dilihat pada indikator BMI_Age.
-![Bar Chart Pendidikan](BarChartPendidikan.png)
+![Bar Chart Pendidikan](assets/BarChartPendidikan.png)
 Dari grafik bar diatas juga bahwa Stunting sendiri terjadi di kalangan masyarakat yang tidak mempunyai latar belakang pendidikan yang bagus. Hal ini dikuatkan berdasarkan literatur yang terlampir bahwa seseorang yang memiliki pendidikan yang cukup baik telah diberikan sosialisasi dan pengetahuan mengenai tumbuh kembang anak.
 
 Berikutnya, kita akan mencoba Bivariate analysis Indicator terhadap Poverty_Rating atau kekayaan. Pada analisis kali ini juga didapatkan data bahwa ternyata rata - rata yang mengalami Stunting berada pada masyarakat yang berekonomi rendah. Bisa dilihat pada gambar dibawah:
-![Bar Chart Kekayaan](BarChartKekayaan.png)
+![Bar Chart Kekayaan](assets/BarChartKekayaan.png)
 Dari situ bisa disimpulkan bahwa masyarakat yang berekonomi rendah berpengaruh juga kedalam kasus pendidikan juga Stunting.
 
 ## Data Preparation
 Sebelum kita masuk ke dalam modeling tentunya ada yang harus dilakukan terlebih dahulu yaitu mengkonversi data yang kita punya kedalam numeric. Tujuannya adalah agar mesin dapat mengenali mengenai data kita, pada laporan proyek ini dibuat saya membuat persebaran data train sebesar 80% dan 20% sebagai data test.
 
 Berikutnya, step yang akan dilakukan adalah melabeli data yang kita punya dengan library bawaan dari sckit-learn yaitu LabelEncoder. LabelEncoder dipilih dikarenakan banyaknya data yang bersifat categorical sehingga akan memudahkan dalam pre-procesing data dalam sekali jalan.
-![Label Encoder](LabelEncoder.png)
+![Label Encoder](assets/LabelEncoder.png)
 Pada gambar diatas, feature column data yang telah di pre-processing antara lain Maternal_Education, Indicator, dan sebagainya yang bisa dilihat pada notebook.
 
 Setelah dilakukan pelabelan, selanjutnya kita akan masuk ke dalam Feature Selection. Feature selection dilakukan agar model dari yang kita bangun berasal dari data yang paling penting yang harus ada.
-![Feature Selection](FeatureSelection.png)
+![Feature Selection](assets/FeatureSelection.png)
 Pada data diatas terlihat bahwa, variabel 'Indicator', 'Gender', 'Maternal_Education' memiliki fitur yang penting untuk permodelan. Oleh karena itu, maka feature selection yang dipilih adalah semua hal yang berkaitan dengan 'Indicator'.
 
 Selepas telah mengetahui fitur mana yang penting untuk di masukkan, sekarang saatnya menyiapkan data untuk digunakan terhadap model yang akan dibuat seperti yang telah saya bicarakan diatas bahwa data yang saya siapkan meliputi 80% data train dan 20% data test.
-![Pembagian Data](PembagianData.png)
+![Pembagian Data](assets/PembagianData.png)
 
 ## Modeling
 Modeling merupakan tahap yang akan menentukan apakah pembelajaran mesin ini dapat memberikan hasil prediksi yang baik. Dalam kasus Stunting ini saya menggunakan 5 Algoritma, yaitu:
 1. Linear Regression
-   ![Linear Regression](LinearRegression.png)
+   ![Linear Regression](assets/LinearRegression.png)
 2. Decision Tree Regression
-   ![Decision Tree Regression](DecisionTreeRegres.png)
+   ![Decision Tree Regression](assets/DecisionTreeRegres.png)
 3. Random Forest Regression
-   ![Random Forest Regression](RandomForestRegress.png)
+   ![Random Forest Regression](assets/RandomForestRegress.png)
 4. Support Vector Regression
-   ![SVR](SVR.png)
+   ![SVR](assets/SVR.png)
 5. Gradient Boosting Regression
-   ![Gradient Boosting Regression](GradientBoost.png)
+   ![Gradient Boosting Regression](assets/GradientBoost.png)
 
 ## Evaluation
 Setelah model dilakukan pelatihan, adapun metrik evaluasi yang akan saya gunakan pada kasus Stunting ini adalah MAE, MSE. Serta ada tambahan aksi yaitu menentukan r2_score agar kita bisa lebih dapat memahami berapa ukuran sebuah metrik akurasi. Berikut hasil MAE, MSE kelima model yang sudah di evaluasi:
-![Alt text](MAExMSE.png)
+![Alt text](assets/MAExMSE.png)
 Dari gambar diatas dapat disimpulkan bahwa kandidat terkuat dimiliki oleh algoritma Random Forest Regression and Gradient Boosting Regression. Indikator dikatakan model yang dihasilkan merupakan pilihan terbaik dikarenakan MAE serta MSE nya paling kecil diantara lainnya dikatakan jika MAE serta MSE didapati valuenya kecil maka bisa dikatakan model yang mempunyai performa yang bagus. Selanjutnya untuk penambahan aksi yang biasanya bertemu dengan metrik akurasi, disini saya menggunakan r2_score agar bisa mendapatkan nilai yang bisa dipahami oleh beberapa mayoritas, berikut hasil setelah dilakukannya r2_score:
-![R-Squared](R-Squared.png)
+![R-Squared](assets/R-Squared.png)
 Hasil yang didapati mulai terlihat bahwa model terbaik dimiliki oleh algoritma Random Forest Regression and Gradient Boosting Regression karena nilai yang dihasilkan cukup identik. Namun jika bener - bener ditentukan mana yang terbaik yaitu Gradient Boosting Regression.
 Berikutnya, kita akan mencoba visualisasi hasil dari evaluasi yang kita lakukan agar semuanya terjasi dalam bentuk informasi.
-![Evaluasi Model Terbaik](EvaluteModel.png)
+![Evaluasi Model Terbaik](assets/EvaluteModel.png)
 
 Sekian laporan yang bisa saya sajikan, dari keseluruhan proses yang dilakukan pertanyaan yang dilontarkan pada problem statement telah terjawab.
