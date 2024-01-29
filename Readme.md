@@ -46,9 +46,9 @@ Untuk menjawab dari permasalahan sebelumnya, penulis mencoba membuat predictive 
 > **Membuat model predictive analysis yang dapat memprediksi tingkat risiko stunting pada anak berdasarkan faktor-faktor gizi dalam makanan ibu hamil, dengan tingkat akurasi yang tinggi.**
 
 ## Data Understanding
-Pada kasus ini saya mengarahkan langsung kepada dataset resmi keluaran dari UNICEF yang berisikan data - data yang beririsan dengan kasus stunting. [UNICEF](https://sdmx.data.unicef.org/databrowser/index.html?q=UNICEF:NUTRITION(1.0)).
+Pada kasus ini penelitian difokuskan pada dataset resmi UNICEF yang berisi data terkait kasus stunting. Dataset ini dapat diakses melalui [UNICEF](https://sdmx.data.unicef.org/databrowser/index.html?q=UNICEF:NUTRITION(1.0)).
 
-Didalamnya banyak sekali variabel - variabel yang bisa dipakai namun saya hanya berfokus kedalam beberapa variabel dibawah ini untuk mengetahui scope batasan persebaran datanya.  
+Meskipun dataset tersebut menyajikan beragam variabel, penelitian ini mempersempit fokusnya pada beberapa variabel tertentu untuk mengidentifikasi batasan dan distribusi data yang relevan.
 
 ### Variabel-variabel pada UNICEF Nutrion dataset adalah sebagai berikut:
 - 'REF_AREA:Geographic area' : Merupakan data geografis yang disajikan pada dataset dalam kasus ini area 'Indonesia' menjadi target.
@@ -63,10 +63,19 @@ Didalamnya banyak sekali variabel - variabel yang bisa dipakai namun saya hanya 
 
 #### Data Wragling
 
-Dikarenakan hasil dataset yang didapatkan berisikan data yang raw atau kotor. Kita harus mempersiapkan terlebih dahulu agar dataset yang akan kita pakai sudah bersih tahap ini adalah mengolah data yang kotor menjadi bersih.
+Karena dataset yang diperoleh bersifat raw atau belum terstruktur, langkah pertama yang perlu diambil adalah membersihkan data. Proses ini melibatkan tahapan pengolahan data kotor menjadi data yang bersih.
 
-- Sebelumnya kita akan memuat dataset yang sudah kita peroleh menggunakkan library pandas
-![Data Loading](assets/DataLoading.png)
+Sebelumnya kita akan memuat dataset yang sudah kita peroleh menggunakkan library pandas.
+```sh
+import pandas as pd
+data = pd.read_csv('Nutritions.csv')
+```
+Hasil dari pemrosesan code diatas dapat dilihat pada Gambar 1
+![Gambar 1](assets/Gambar1.png)
+Gambar 1. Data Loading
+Pada Gambar 1 disajikan data yang berisikan dataset asli sebelum dilakukan tahap pengolahan data
+
+TODO:Revision Data Understanding, Data Preparation, Modeling, Evaluation, Struktur laporan dan penulisan.
 - Setelah dimuat maka terlihat bahwa data yang diperoleh dari UNICEF masih berbentuk kondisi yang tidak kita inginkan, selanjutnya maka kita coba telusuri dengan menggunakan fungsi info().
 ![Data Info](assets/DataInfo.png)
 - Dikarenakan banyaknya feature variabel maka sesuai dengan kondisi di atas, kita hanya akan menggunakan variabel tertentu agar scope yang kita telusuri sesuai dan tida melabar kemana - mana. Dalam penentuan variabel yang akan diekstraksi, saya menggunakan fungsi parameter dari pandas yaitu chunksize yang merupakan kondisi yang paling cocok dari kasus ini dikarenakan dataset kita yang cukup besar dan complex sehingga kita memerlukan potongan - potongan kecil untuk dalam pemrosesan.
