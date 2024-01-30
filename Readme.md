@@ -124,6 +124,7 @@ Gambar 7. Hasil Seleksi Fitur Indicator
 
 Pada Gambar 7 disajikan informasi dataset yang terbaru yang sudah dilakukan tahap seleksi fitur yang menghasilkan jumlah data di awal sebesar 10959 menjadi 2159. Hal ini juga didukung ketika menggunakan fungsi `.shape` yang tertera pada Gambar 8
 ![Gambar 8](assets/Gambar8.png)
+Gambar 8. Jumlah Dataframe Dataset Terbaru
 
 ![Nutrisi Indonesia](assets/NutriIndo.png)
 - Berikutnya, mencari informasi tentang dataset mengenai jumlah baris data,kolom data terhadap DataFrame baru. Saya menggunakan fungsi shape().
