@@ -240,36 +240,64 @@ Gambar 23. Trend Underweight Indonesia
 
 Sebelum kita masuk ke dalam modeling tentunya ada yang harus dilakukan terlebih dahulu yaitu mengkonversi data yang kita punya kedalam numeric. Tujuannya adalah agar mesin dapat mengenali mengenai data kita, pada laporan proyek ini dibuat saya membuat persebaran data train sebesar 80% dan 20% sebagai data test.
 
-Berikutnya, step yang akan dilakukan adalah melabeli data yang kita punya dengan library bawaan dari sckit-learn yaitu LabelEncoder. LabelEncoder dipilih dikarenakan banyaknya data yang bersifat categorical sehingga akan memudahkan dalam pre-procesing data dalam sekali jalan.
-![Label Encoder](assets/LabelEncoder.png)
-Pada gambar diatas, feature column data yang telah di pre-processing antara lain Maternal_Education, Indicator, dan sebagainya yang bisa dilihat pada notebook.
+Selanjutnya, langkah yang diambil adalah memberikan label pada data menggunakan library bawaan dari scikit-learn, yaitu LabelEncoder. Pemilihan LabelEncoder dipertimbangkan karena banyaknya data yang bersifat kategorikal, sehingga mempermudah dalam pra-pemrosesan data secara efisien. LabelEncoder berfungsi mengubah data kategorikal menjadi data numerik, seperti yang dapat dilihat pada Gambar 24.
+![Gambar 24](assets/Gambar24.png)
+Gambar 24. Transformasi Numeric
 
-Setelah dilakukan pelabelan, selanjutnya kita akan masuk ke dalam Feature Selection. Feature selection dilakukan agar model dari yang kita bangun berasal dari data yang paling penting yang harus ada.
-![Feature Selection](assets/FeatureSelection.png)
-Pada data diatas terlihat bahwa, variabel 'Indicator', 'Gender', 'Maternal_Education' memiliki fitur yang penting untuk permodelan. Oleh karena itu, maka feature selection yang dipilih adalah semua hal yang berkaitan dengan 'Indicator'.
+Setelah mengalami transformasi seperti yang terlihat pada Gambar 24, maka hasil akhirnya akan seperti pada Gambar 25.
+![Gambar 25](assets/Gambar25.png)
+Gambar 25. Data Setelah LabelEncoder
 
-Selepas telah mengetahui fitur mana yang penting untuk di masukkan, sekarang saatnya menyiapkan data untuk digunakan terhadap model yang akan dibuat seperti yang telah saya bicarakan diatas bahwa data yang saya siapkan meliputi 80% data train dan 20% data test.
-![Pembagian Data](assets/PembagianData.png)
+Setelah proses pelabelan selesai, langkah selanjutnya adalah melakukan Feature Selection. Tujuan dari Feature Selection adalah memilih fitur-fitur yang paling penting dari data untuk membangun model. Sebelumnya, kita perlu menentukan variabel independen (X) dan variabel dependen (Y) dari data.
+```sh
+X = nutri_indo[['Indicator', 'Residence',
+                'Poverty_Rating', 'Maternal_Education', 'Age', 'Gender']]
+y = nutri_indo['Observation_Value']
+```
+Setelah variabel independen (X) dan variabel dependen (Y) ditentukan, langkah berikutnya adalah melakukan seleksi fitur. Tujuannya adalah untuk mengidentifikasi fitur-fitur yang paling penting dan relevan sehingga dapat dimasukkan ke dalam proses pemodelan yang bisa dilihat pada Gambar 26.
+![Gambar 26](assets/Gambar26.png)
+Gambar 26. Seleksi Fitur
 
-Modeling merupakan tahap yang akan menentukan apakah pembelajaran mesin ini dapat memberikan hasil prediksi yang baik. Dalam kasus Stunting ini saya menggunakan 5 Algoritma, yaitu:
-1. Linear Regression
-   ![Linear Regression](assets/LinearRegression.png)
-2. Decision Tree Regression
-   ![Decision Tree Regression](assets/DecisionTreeRegres.png)
-3. Random Forest Regression
-   ![Random Forest Regression](assets/RandomForestRegress.png)
-4. Support Vector Regression
-   ![SVR](assets/SVR.png)
-5. Gradient Boosting Regression
-   ![Gradient Boosting Regression](assets/GradientBoost.png)
+Berdasarkan Gambar 26, terlihat bahwa variabel 'Indicator', 'Gender', dan 'Maternal_Education' memiliki fitur yang penting untuk proses pemodelan. Oleh karena itu, fitur selection yang dipilih adalah semua yang terkait dengan 'Indicator'.
+
+Setelah mengetahui fitur-fitur yang penting, langkah selanjutnya adalah menyiapkan data untuk digunakan dalam pembuatan model. Data yang telah diidentifikasi fiturnya sebagai penting dibagi menjadi dua bagian, yaitu 80% data train dan 20% data test menggunakan library train_test_split dari scikit-learn.
+```sh
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=2)
+```
+![Gambar 27](assets/Gambar27.png)
+Gambar 27. Informasi Pembagian Data
+
+Langkah selanjutnya setelah dilakukan pembagian data adalah menerapkan StandardScaler. StandardScaler berguna untuk mengubah skala fitur-fitur pada dataset sehingga memiliki mean = 0 dan deviasi standar = 1. Hasil dari penerapan StandardScaller bisa dilihat pada Gambar 28.
+![Gambar 28](assets/Gambar28.png)
+Gambar 28. Hasil StandardScaller
+
+Setelah dilakukan StandardScaler dan mengingat distribusi data yang tidak normal, beberapa algoritma yang dipilih untuk diuji dalam kasus stunting adalah:
+1. Linear Regression: Metode regresi linear sederhana yang mencoba menemukan hubungan linier antara variabel input dan output.
+2. Decision Tree Regression: Algoritma yang menggunakan struktur pohon keputusan untuk melakukan prediksi pada masalah regresi.
+3. Random Forest Regression: Penggabungan beberapa pohon keputusan untuk meningkatkan kinerja dan mengurangi overfitting.
+4. Support Vector Regression: Algoritma SVM yang digunakan untuk masalah regresi.
+5. Gradient Boosting Regression: Algoritma yang membangun serangkaian model prediktif secara bertahap, di mana setiap model berusaha memperbaiki kesalahan prediksi model sebelumnya. Gradient Boosting Regression adalah metode yang efektif untuk masalah regresi.
+
+Metode-metode di atas dipilih dengan harapan dapat memberikan hasil prediksi yang baik dan dapat menangani distribusi data yang tidak normal. 
 
 ## Evaluation
-Setelah model dilakukan pelatihan, adapun metrik evaluasi yang akan saya gunakan pada kasus Stunting ini adalah MAE, MSE. Serta ada tambahan aksi yaitu menentukan r2_score agar kita bisa lebih dapat memahami berapa ukuran sebuah metrik akurasi. Berikut hasil MAE, MSE kelima model yang sudah di evaluasi:
-![Alt text](assets/MAExMSE.png)
-Dari gambar diatas dapat disimpulkan bahwa kandidat terkuat dimiliki oleh algoritma Random Forest Regression and Gradient Boosting Regression. Indikator dikatakan model yang dihasilkan merupakan pilihan terbaik dikarenakan MAE serta MSE nya paling kecil diantara lainnya dikatakan jika MAE serta MSE didapati valuenya kecil maka bisa dikatakan model yang mempunyai performa yang bagus. Selanjutnya untuk penambahan aksi yang biasanya bertemu dengan metrik akurasi, disini saya menggunakan r2_score agar bisa mendapatkan nilai yang bisa dipahami oleh beberapa mayoritas, berikut hasil setelah dilakukannya r2_score:
-![R-Squared](assets/R-Squared.png)
-Hasil yang didapati mulai terlihat bahwa model terbaik dimiliki oleh algoritma Random Forest Regression and Gradient Boosting Regression karena nilai yang dihasilkan cukup identik. Namun jika bener - bener ditentukan mana yang terbaik yaitu Gradient Boosting Regression.
-Berikutnya, kita akan mencoba visualisasi hasil dari evaluasi yang kita lakukan agar semuanya terjasi dalam bentuk informasi.
-![Evaluasi Model Terbaik](assets/EvaluteModel.png)
+Setelah model dilakukan pelatihan, metrik evaluasi yang digunakan pada kasus Stunting ini adalah MAE (Mean Absolute Error), MSE (Mean Squared Error), dan R-squared Score. Berikut adalah hasil MAE, MSE, dan R-squared Score dari kelima model yang dievaluasi:
 
-Sekian laporan yang bisa saya sajikan, dari keseluruhan proses yang dilakukan pertanyaan yang dilontarkan pada problem statement telah terjawab.
+| Model                        | MAE    | MSE     | R-squared |
+| ---------------------------- | ------ | ------- | --------- |
+| Linear Regression            | 14.003 | 358.522 | 0.628     |
+| Decision Tree Regression     | 4.044  | 35.819  | 0.962     |
+| Random Forest Regression     | 3.895  | 31.799  | 0.967     |
+| Support Vector Regression    | 14.680 | 466.564 | 0.516     |
+| Gradient Boosting Regression | 4.12   | 31.008  | 0.967     |
+
+Dari tabel di atas, dapat disimpulkan bahwa Random Forest Regression dan Gradient Boosting Regression memberikan hasil prediksi yang paling akurat, dengan nilai MAE dan MSE yang rendah. Nilai R-squared yang tinggi pada kedua model juga menandakan kemampuan yang baik dalam menjelaskan variasi data stunting. Secara umum, model yang memiliki MAE dan MSE lebih rendah dianggap lebih baik dalam melakukan prediksi yang akurat. Tingkat akurasi model juga diukur menggunakan R-squared, yang memberikan gambaran tentang seberapa baik model dapat menjelaskan variasi dalam data. Nilai R-squared berkisar antara 0 dan 1, dan semakin mendekati 1, semakin baik modelnya.
+
+Hasil yang didapat mulai terlihat bahwa model terbaik dimiliki oleh algoritma Random Forest Regression dan Gradient Boosting Regression karena nilai yang dihasilkan cukup identik. Namun, jika harus menentukan model yang terbaik berdasarkan angka, pilihan jatuh pada Gradient Boosting Regression
+
+Berikutnya, kita akan mencoba visualisasi hasil dari evaluasi yang kita lakukan agar semuanya terjasi dalam bentuk informasi.
+![Gambar 29](assets/Gambar29.png)
+Gambar 29. Visualisasi Predict Value
+
+Sekian laporan Predictive Analysis, semoga informasi yang disajikan memberikan pemahaman yang mendalam mengenai prediksi tingkat risiko stunting pada anak berdasarkan faktor-faktor gizi dalam makanan ibu hamil. Evaluasi hasil menunjukkan bahwa model Random Forest Regression dan Gradient Boosting Regression menjadi pilihan terbaik dengan tingkat akurasi yang tinggi. Laporan ini diharapkan dapat memberikan kontribusi positif terhadap pemahaman dan penanganan masalah stunting.
