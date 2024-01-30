@@ -177,19 +177,44 @@ Gambar 14. Grafik Persebaran Data Poverty Rating
 
 Terakhir untuk pendidikannya sendiri di dominasi oleh masyarakat yang tidak mempunyai pendidikan secara khusus. Hal ini bisa dilihat dari persebaran data `Maternal_Education` pada Gambar 15.
 <p align="center">
-  <img src="assets/Gambar13.png">
+  <img src="assets/Gambar15.png">
 </p>
 Gambar 15. Grafik Persebaran Data Maternal Education
 
-Selanjutnya setelah diketahui distribusi data tidak adanya outliers, maka kita bisa lanjutkan step berikutnya yaitu Bivariate analysis Indicator terhadap Maternal Education. Fokus utamanya terhadap kasus stunting.
-![HeatMap Pendidikan](assets/HeatMapPendidikan.png)
-Diketahui dari heatmap tersebut bahwa korelasi kasus stunting dipengaruhi oleh beberapa faktor diantaranya Underweight, Wasting, Severve_Wasting, Overweight. Selain itu pemberian ASI pada rentang waktu 12 - 15 Bulan ke bayi mempunyai pengaruh juga terhadap Stunting. Turut serta bepengaruh juga terhadap ASI yang diberikan oleh batita hal ini bisa dilihat pada indikator BMI_Age.
-![Bar Chart Pendidikan](assets/BarChartPendidikan.png)
-Dari grafik bar diatas juga bahwa Stunting sendiri terjadi di kalangan masyarakat yang tidak mempunyai latar belakang pendidikan yang bagus. Hal ini dikuatkan berdasarkan literatur yang terlampir bahwa seseorang yang memiliki pendidikan yang cukup baik telah diberikan sosialisasi dan pengetahuan mengenai tumbuh kembang anak.
+#### Bivariate Analysis
 
-Berikutnya, kita akan mencoba Bivariate analysis Indicator terhadap Poverty_Rating atau kekayaan. Pada analisis kali ini juga didapatkan data bahwa ternyata rata - rata yang mengalami Stunting berada pada masyarakat yang berekonomi rendah. Bisa dilihat pada gambar dibawah:
-![Bar Chart Kekayaan](assets/BarChartKekayaan.png)
-Dari situ bisa disimpulkan bahwa masyarakat yang berekonomi rendah berpengaruh juga kedalam kasus pendidikan juga Stunting.
+Dengan mengetahui bahwa distribusi data tidak memiliki outliers, langkah selanjutnya adalah melakukan Bivariate Analysis antara `Indicator - Maternal Education` dan `Indicator - Poverty_Rating` dengan fokus utama pada kasus stunting.
+
+Dari hasil Bivariate Analysis antara `Indicator - Maternal Education`, mayoritas kasus yang terindikasi sebagai *Stunting* memiliki korelasi dengan tingkat pendidikan ibu. Data menunjukkan bahwa tingkat stunting lebih tinggi pada ibu yang tidak berpendidikan. Temuan ini juga berkaitan dengan kasus Wasting, Severe_Wasting, dan Overweight, sebagaimana terlihat pada Gambar 16.
+![Gambar 16](assets/Gambar16.png)
+Gambar 16. Hubungan Indicator - Maternal Education
+
+Jika dilihat pada heatmap hubungan antara Indicator - Maternal Education, terlihat bahwa nilai berkisar antara -1 sampai dengan 1. Nilai -1 menunjukkan tidak ada korelasi terhadap variabel fitur, sementara nilai 1 menunjukkan korelasi penuh. Intensitas warna pada heatmap mencerminkan kekuatan dan arah korelasi; semakin pekat warnanya, semakin kuat korelasinya. Sebaliknya, semakin terang warnanya, semakin rendah korelasinya. Hal ini tergambarkan pada Gambar 17.
+<p align="center">
+  <img src="assets/Gambar17.png">
+</p>
+Gambar 17. Heatmap Hubungan Indicator - Maternal Education
+Dari Gambar 17, dapat ditarik beberapa informasi penting:
+1. Korelasi tertinggi terhadap kasus stunting terdapat pada indikator Underweight, Wasting, Severve_Wasting, dan Overweight.
+2. Breastfed (12 - 15 Month) menunjukkan korelasi yang signifikan dengan kasus stunting, yaitu sebesar 0.24, diikuti oleh indikator Breastfed dalam jenjang waktu yang berbeda dengan nilai 0.19 dan 0.18.
+3. Kategori pendidikan juga mempengaruhi ASI yang diberikan pada balita, seperti yang terlihat pada indikator BMI_Age Breastfed (0 - 23 Month) dengan korelasi sebesar 0.49.
+
+Selanjutnya, antara `Indicator - Poverty_Rating` tidak kalah menarik bahwa data yang didapatkan kasus stunting terjadi pada masyarakat yang memiliki kekayaan yang rendah dan jarang terjadi pada masyarakat yang memiliki kekayaan menengah ke atas. Hal ini tergambarkan pada Gambar 18.
+![Gambar 18](assets/Gambar18.png)
+Gambar 18. Hubungan Indicator - Poverty Rating
+Selanjutnya gambaran korelasi antara Poverty Rating dengan Indicator dengan menggunakan heatmap bisa dilihat pada Gambar 19.
+<p align="center">
+  <img src="assets/Gambar19.png">
+</p>
+Gambar 19. Heatmap Hubungan Indicator - Poverty Rating
+Dari Gambar 19, dapat ditarik beberapa informasi penting:
+1. Stunting tampaknya terkait erat dengan pemberian ASI pada anak usia 0-23 bulan (Breastfed), yang menunjukkan korelasi yang signifikan dengan tingkat kekayaan masyarakat sekitar, mencapai nilai sebesar 0.69. Namun, hubungan ini cenderung mengecil setelah anak mencapai usia 15 bulan ke atas.
+2. Solid_Food dengan BMI_Age menunjukkan korelasi yang tinggi sebesar 0.8 menunjukkan bahwa ada kecenderungan di mana peningkatan konsumsi makanan padat berkaitan erat dengan peningkatan nilai indeks massa tubuh berdasarkan usia 
+3. Solid_Food dengan Meal_Frequency pun tinggi 0.92 menunjukkan bahwa ketika konsumsi makanan padat meningkat atau menurun, frekuensi makan juga mengikuti pola yang serupa. Dengan kata lain, adanya nilai yang tinggi pada Solid_Food cenderung berkorelasi positif dengan peningkatan frekuensi makan
+
+
+## Modeling
+
 Sebelum kita masuk ke dalam modeling tentunya ada yang harus dilakukan terlebih dahulu yaitu mengkonversi data yang kita punya kedalam numeric. Tujuannya adalah agar mesin dapat mengenali mengenai data kita, pada laporan proyek ini dibuat saya membuat persebaran data train sebesar 80% dan 20% sebagai data test.
 
 Berikutnya, step yang akan dilakukan adalah melabeli data yang kita punya dengan library bawaan dari sckit-learn yaitu LabelEncoder. LabelEncoder dipilih dikarenakan banyaknya data yang bersifat categorical sehingga akan memudahkan dalam pre-procesing data dalam sekali jalan.
@@ -203,7 +228,6 @@ Pada data diatas terlihat bahwa, variabel 'Indicator', 'Gender', 'Maternal_Educa
 Selepas telah mengetahui fitur mana yang penting untuk di masukkan, sekarang saatnya menyiapkan data untuk digunakan terhadap model yang akan dibuat seperti yang telah saya bicarakan diatas bahwa data yang saya siapkan meliputi 80% data train dan 20% data test.
 ![Pembagian Data](assets/PembagianData.png)
 
-## Modeling
 Modeling merupakan tahap yang akan menentukan apakah pembelajaran mesin ini dapat memberikan hasil prediksi yang baik. Dalam kasus Stunting ini saya menggunakan 5 Algoritma, yaitu:
 1. Linear Regression
    ![Linear Regression](assets/LinearRegression.png)
