@@ -194,6 +194,7 @@ Jika dilihat pada heatmap hubungan antara Indicator - Maternal Education, terlih
   <img src="assets/Gambar17.png">
 </p>
 Gambar 17. Heatmap Hubungan Indicator - Maternal Education
+
 Dari Gambar 17, dapat ditarik beberapa informasi penting:
    1. Korelasi tertinggi terhadap kasus stunting terdapat pada indikator Underweight, Wasting, Severve_Wasting, dan Overweight.
    2. Breastfed (12 - 15 Month) menunjukkan korelasi yang signifikan dengan kasus stunting, yaitu sebesar 0.24, diikuti oleh indikator Breastfed dalam jenjang waktu yang berbeda dengan nilai 0.19 dan 0.18.
