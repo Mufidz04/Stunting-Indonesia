@@ -215,11 +215,7 @@ Tabel 4. Informasi Data
 
 Pada Tabel 4, disajikan sebuah informasi variabel fitur, tipe data, dan jumlah data sebesar 10959.
 
-Setelah data menjadi lebih mudah dibaca, langkah selanjutnya adalah memeriksa apakah dataset yang telah dibersihkan memiliki nilai duplikat dengan menggunakan fungsi `df.duplicated().sum()`. Pada tahap ini, juga dilakukan evaluasi terhadap keberadaan nilai null dalam data menggunakan fungsi `df.isnull()` seperti pada Gambar 1
-![Gambar 1](assets/Gambar1.png)
-Gambar 1. Data Null dan Duplicated
-
-Seperti yang terlihat pada Gambar 1, data yang telah melalui tahap pemrosesan tidak menunjukkan adanya nilai *null* maupun *duplicated*.
+Setelah data menjadi lebih mudah dibaca, langkah selanjutnya adalah memeriksa apakah dataset yang telah dibersihkan memiliki nilai duplikat dengan menggunakan fungsi `df.duplicated().sum()`. Pada tahap ini, juga dilakukan evaluasi terhadap keberadaan nilai null dalam data menggunakan fungsi `df.isnull()` yang menghasilkan data yang telah melalui tahap pemrosesan tidak menunjukkan adanya nilai *null* maupun *duplicated*.
 
 Selanjutnya, akan dilakukan penelusuran lebih lanjut terhadap variabel "Indicator". Pemilihan variabel ini didasarkan pada relevansinya dengan literatur yang telah dilampirkan pada data di atas diataranya:
 - Ever breastfed (0-23 months)
@@ -257,9 +253,7 @@ Pada Tabel disajikan informasi dataset yang terbaru yang sudah dilakukan tahap s
 
 Karena masih terdapat nilai yang mengindikasikan total, dilakukan manipulasi string lagi untuk mendapatkan informasi yang lebih terstruktur, mulai dari `Residence`, `Maternal_Education`, hingga `Poverty_Rating`.
 
-Value dari `Residence` meliputi *Total*, *Rural*, *Urban*. Nilai total akan diubah menjadi *Suburban*, mengikuti informasi dari tempat tinggal di Indonesia agar distribusi data menjadi lebih terukur. Hasil pemrosesan tersebut bisa dilihat pada Gambar 2.
-![Gambar 2](assets/Gambar2.png)
-Gambar 2. Distribusi Data Residence
+Value dari `Residence` meliputi *Total*, *Rural*, *Urban*. Nilai total akan diubah menjadi *Suburban*, mengikuti informasi dari tempat tinggal di Indonesia agar distribusi data menjadi lebih terukur.
 
 Berikutnya value dari `Maternal_Education` pun akan dikelompokkan menjadi 4 subset dari 7 yaitu:
 1. *No education*
@@ -267,13 +261,7 @@ Berikutnya value dari `Maternal_Education` pun akan dikelompokkan menjadi 4 subs
 3. *Secondary education*
 4. *Tertiary education*
 
-Hasil pemrosesan tersebut juga dapat dilihat pada Gambar 3.
-![Gambar 3](assets/Gambar3.png)
-Gambar 3. Distribusi Data Maternal Education
-
-Selanjutnya pada tahap `Poverty_Rating` sebelum dilakukannya analisis terhadap variabel antar variabel pun akan dikelempokkan menjadi 3 kategori yaitu *Poor*, *Middle Class*, *Rich*. Hasil tersebut dapat dilihat pada Gambar 4.
-![Gambar 4](assets/Gambar4.png)
-Gambar 4. Distribusi Data Poverty Rating
+Selanjutnya pada tahap `Poverty_Rating` sebelum dilakukannya analisis terhadap variabel antar variabel pun akan dikelempokkan menjadi 3 kategori yaitu *Poor*, *Middle Class*, *Rich*. 
 
 Terakhir kita akan menyimpan data dataset yang baru dengan menggunakan code dibawah ini
 ```sh
@@ -284,31 +272,31 @@ nutri_indo.to_csv('Nutrition_Indonesia.csv', index=False)
 
 Teknik data preparation yang telah dilakukan pada tahap Data Understanding mencakup pembersihan data (Cleaning Data), pemilihan fitur (Feature Selection), manipulasi *string*, dan penyimpanan data. Pembersihan data dilakukan untuk mengatasi penamaan yang nilai-nilai yang tidak valid dan mengelola nilai yang hilang. Pemilihan fitur dilakukan berdasarkan relevansi dan kebutuhan analisis untuk memfokuskan perhatian pada variabel yang penting. Manipulasi string diterapkan untuk merapikan dan mengekstrak informasi yang dibutuhkan dari variabel dengan tipe data string. Terakhir, data disimpan untuk memastikan kelancaran analisis di tahap berikutnya. Selanjutnya persiapan data menciptakan dasar yang solid untuk tahap selanjutnya, yaitu Exploratory Data Analysis (EDA) dan Visualisasi. EDA dan Visualisasi akan membantu dalam menjelajahi lebih lanjut data, mengidentifikasi distribusi, mengevaluasi hubungan antar variabel, dan mengidentifikasi tren atau pola yang mungkin muncul dalam dataset. Pada tahap ini, dilakukan pengecekan keberadaan outliers dalam data setelah proses persiapan data. Selain itu, dilakukan analisis korelasi antar variabel untuk memahami hubungan di antara mereka. Proses ini melibatkan eksplorasi statistik deskriptif dan visualisasi data untuk mengidentifikasi pola dan anomali. Pada tahap ini, dilakukan pengecekan outliers dan analisis korelasi antar variabel. Proses ini melibatkan statistik deskriptif, visualisasi data, serta analisis univariat, bivariat, dan multivariat untuk memahami karakteristik dan hubungan variabel. Tujuannya adalah mendapatkan wawasan yang berharga untuk tahap analisis data selanjutnya.
 
-Sebelum melanjutkan analisis, akan dilihat terlebih dahulu persebaran data. Hasilnya menunjukkan bahwa distribusi data tidak normal dan cenderung Right-Skewed atau Positive-Skewed yang bisa dilihat pada Gambar 5.
-![Gambar 5](assets/Gambar5.png)
-Gambar 5. Grafik Distribusi Data
-Terlihat dari Gambar 5 bahwa tidak terdapat outliers, menunjukkan bahwa data tidak memerlukan langkah khusus untuk menangani outliers.
+Sebelum melanjutkan analisis, akan dilihat terlebih dahulu persebaran data. Hasilnya menunjukkan bahwa distribusi data tidak normal dan cenderung Right-Skewed atau Positive-Skewed yang bisa dilihat pada Gambar 1.
+![Gambar 1](assets/Gambar5.png)
+Gambar 1. Grafik Distribusi Data
+Terlihat dari Gambar 1 bahwa tidak terdapat outliers, menunjukkan bahwa data tidak memerlukan langkah khusus untuk menangani outliers.
 
 Berikutnya kita coba analisis persebaran data categorical yang meliputi `Residence`, `Poverty_Rating`, dan `Maternal_Education`.
 
-Dapat dilihat pada Gambar 6, persebaran data `Residence` di Indonesia masyarakat lebih banyak bertempat tinggal pada 'Suburban'.
+Dapat dilihat pada Gambar 2, persebaran data `Residence` di Indonesia masyarakat lebih banyak bertempat tinggal pada 'Suburban'.
 <p align="center">
-  <img src="assets/Gambar6.png">
+  <img src="assets/Gambar2.png">
 </p>
 
-Gambar 6. Grafik Persebaran Data Residence
+Gambar 2. Grafik Persebaran Data Residence
 
-Diikuti juga pada `Poverty_Rating`, didapati persebaran data mayoritas tidak mempunyai kekayaan yang terdapat pada Gambar 7.
+Diikuti juga pada `Poverty_Rating`, didapati persebaran data mayoritas tidak mempunyai kekayaan yang terdapat pada Gambar 3.
 <p align="center">
-  <img src="assets/Gambar7.png">
+  <img src="assets/Gambar3.png">
 </p>
-Gambar 7. Grafik Persebaran Data Poverty Rating
+Gambar 3. Grafik Persebaran Data Poverty Rating
 
-Terakhir untuk pendidikannya sendiri di dominasi oleh masyarakat yang tidak mempunyai pendidikan secara khusus. Hal ini bisa dilihat dari persebaran data `Maternal_Education` pada Gambar 8.
+Terakhir untuk pendidikannya sendiri di dominasi oleh masyarakat yang tidak mempunyai pendidikan secara khusus. Hal ini bisa dilihat dari persebaran data `Maternal_Education` pada Gambar 4.
 <p align="center">
-  <img src="assets/Gambar8.png">
+  <img src="assets/Gambar4.png">
 </p>
-Gambar 8. Grafik Persebaran Data Maternal Education
+Gambar 4. Grafik Persebaran Data Maternal Education
 
 #### Bivariate Analysis
 
@@ -324,13 +312,13 @@ Dari hasil Bivariate Analysis antara `Indicator - Maternal Education`, mayoritas
 | Tertiary education  | 61.675000                | 53.5250                  | 38.500000                | 96.150000               | 0.000000  | 91.850000  | 0.000000  | 75.500         | 0.000000    | 0.000000  | 0.000000       | 0.000000   |
 Tabel 6. Hubungan Indicator - Maternal Education
 
-Jika dilihat pada heatmap hubungan antara Indicator - Maternal Education, terlihat bahwa nilai berkisar antara -1 sampai dengan 1. Nilai -1 menunjukkan tidak ada korelasi terhadap variabel fitur, sementara nilai 1 menunjukkan korelasi penuh. Intensitas warna pada heatmap mencerminkan kekuatan dan arah korelasi; semakin pekat warnanya, semakin kuat korelasinya. Sebaliknya, semakin terang warnanya, semakin rendah korelasinya. Hal ini tergambarkan pada Gambar 9.
+Jika dilihat pada heatmap hubungan antara Indicator - Maternal Education, terlihat bahwa nilai berkisar antara -1 sampai dengan 1. Nilai -1 menunjukkan tidak ada korelasi terhadap variabel fitur, sementara nilai 1 menunjukkan korelasi penuh. Intensitas warna pada heatmap mencerminkan kekuatan dan arah korelasi; semakin pekat warnanya, semakin kuat korelasinya. Sebaliknya, semakin terang warnanya, semakin rendah korelasinya. Hal ini tergambarkan pada Gambar 5.
 <p align="center">
-  <img src="assets/Gambar9.png">
+  <img src="assets/Gambar5.png">
 </p>
-Gambar 9. Heatmap Hubungan Indicator - Maternal Education
+Gambar 5. Heatmap Hubungan Indicator - Maternal Education
 
-Dari Gambar 9, dapat ditarik beberapa informasi penting:
+Dari Gambar 5, dapat ditarik beberapa informasi penting:
 
    1. Korelasi tertinggi terhadap kasus stunting terdapat pada indikator Underweight, Wasting, Severve_Wasting, dan Overweight.
    2. Breastfed (12 - 15 Month) menunjukkan korelasi yang signifikan dengan kasus stunting, yaitu sebesar 0.24, diikuti oleh indikator Breastfed dalam jenjang waktu yang berbeda dengan nilai 0.19 dan 0.18.
@@ -345,13 +333,13 @@ Selanjutnya, antara `Indicator - Poverty_Rating` tidak kalah menarik bahwa data 
 | Rich           | 68.750000                | 56.250000                | 44.425000                | 94.418182               | 0.000000  | 89.9000    | 0.000000  | 76.350000      | 0.000000    | 0.000000  | 0.000000       | 0.000000   |
 Tabel 7. Hubungan Indicator - Poverty Rating
 
-Selanjutnya gambaran korelasi antara Poverty Rating dengan Indicator dengan menggunakan heatmap bisa dilihat pada Gambar 19.
+Selanjutnya gambaran korelasi antara Poverty Rating dengan Indicator dengan menggunakan heatmap bisa dilihat pada Gambar 6.
 <p align="center">
-  <img src="assets/Gambar10.png">
+  <img src="assets/Gambar6.png">
 </p>
-Gambar 10. Heatmap Hubungan Indicator - Poverty Rating.
+Gambar 6. Heatmap Hubungan Indicator - Poverty Rating.
 
-Dari Gambar 10, dapat ditarik beberapa informasi penting:
+Dari Gambar 6, dapat ditarik beberapa informasi penting:
 
    1. Stunting tampaknya terkait erat dengan pemberian ASI pada anak usia 0-23 bulan (Breastfed), yang menunjukkan korelasi yang signifikan dengan tingkat kekayaan masyarakat sekitar, mencapai nilai sebesar 0.69. Namun, hubungan ini cenderung mengecil setelah anak mencapai usia 15 bulan ke atas.
    2. Solid_Food dengan BMI_Age menunjukkan korelasi yang tinggi sebesar 0.8 menunjukkan bahwa ada kecenderungan di mana peningkatan konsumsi makanan padat berkaitan erat dengan peningkatan nilai indeks massa tubuh berdasarkan usia 
@@ -360,33 +348,37 @@ Dari Gambar 10, dapat ditarik beberapa informasi penting:
 #### Multivariate Analysis
 
 Multivariate Analysis dilakukan untuk memahami tren khususnya pada kasus Stunting. Analisis ini juga mencakup tren pada kasus Underweight, Overweight, dan Wasting.
-![Gambar 11](assets/Gambar11.png)
-Gambar 11. Trend Stunting Indonesia
+![Gambar 7](assets/Gambar7.png)
+Gambar 7. Trend Stunting Indonesia
 
-Berdasarkan Gambar 11, trend yang terjadi di Indonesia Stunting masih mencapai titik tertinggi dibandingkan tahun tahun sebelumnya. Selanjutnya terdapat trend Wasting yang dapat dilihat pada Gambar 12.
-![Gambar 12](assets/Gambar12.png)
-Gambar 12. Trend Wasting Indonesia
+Berdasarkan Gambar 7, trend yang terjadi di Indonesia Stunting masih mencapai titik tertinggi dibandingkan tahun tahun sebelumnya. Selanjutnya terdapat trend Wasting yang dapat dilihat pada Gambar 8.
+![Gambar 8](assets/Gambar8.png)
+Gambar 8. Trend Wasting Indonesia
 
-Pada Gambar 13, trend yang terjadi sudah sempet menurun namun dilihat dari garis yang membentang di level sekarang kategorinya masih tinggi. Berikutnya adapula trend Overweight yang dapat dilihat pada Gambar 13.
-![Gambar 13](assets/Gambar13.png)
-Gambar 13. Trend Overweight Indonesia
+Pada Gambar 9, trend yang terjadi sudah sempet menurun namun dilihat dari garis yang membentang di level sekarang kategorinya masih tinggi. Berikutnya adapula trend Overweight yang dapat dilihat pada Gambar 9.
+![Gambar 9](assets/Gambar9.png)
+Gambar 9. Trend Overweight Indonesia
 
-Jika dilihat pada Gambar 13, indeks overweight sudah cukup menurun tetapi masih belum bisa dikatakan aman. Dan terakhir terdapat trend underweight yang dapat dilihat pada Gambar 14.
-![Gambar 14](assets/Gambar14.png)
-Gambar 14. Trend Underweight Indonesia
+Jika dilihat pada Gambar 9, indeks overweight sudah cukup menurun tetapi masih belum bisa dikatakan aman. Dan terakhir terdapat trend underweight yang dapat dilihat pada Gambar 10.
+![Gambar 10](assets/Gambar10.png)
+Gambar 10. Trend Underweight Indonesia
 
 
 ## Modeling
 
 Sebelum kita masuk ke dalam modeling tentunya ada yang harus dilakukan terlebih dahulu yaitu mengkonversi data yang kita punya kedalam numeric. Tujuannya adalah agar mesin dapat mengenali mengenai data kita, pada laporan proyek ini dibuat saya membuat persebaran data train sebesar 80% dan 20% sebagai data test.
 
-Selanjutnya, langkah yang diambil adalah memberikan label pada data menggunakan library bawaan dari scikit-learn, yaitu LabelEncoder. Pemilihan LabelEncoder dipertimbangkan karena banyaknya data yang bersifat kategorikal, sehingga mempermudah dalam pra-pemrosesan data secara efisien. LabelEncoder berfungsi mengubah data kategorikal menjadi data numerik, seperti yang dapat dilihat pada Gambar 15.
-![Gambar 15](assets/Gambar15.png)
-Gambar 15. Transformasi Numeric
+Selanjutnya, langkah yang diambil adalah memberikan label pada data menggunakan library bawaan dari scikit-learn, yaitu LabelEncoder. Pemilihan LabelEncoder dipertimbangkan karena banyaknya data yang bersifat kategorikal, sehingga mempermudah dalam pra-pemrosesan data secara efisien. LabelEncoder berfungsi mengubah data kategorikal menjadi data numerik.
 
-Setelah mengalami transformasi seperti yang terlihat pada Gambar 15, maka hasil akhirnya akan seperti pada Gambar 16.
-![Gambar 16](assets/Gambar16.png)
-Gambar 16. Data Setelah LabelEncoder
+Setelah mengalami transformasi, maka hasil akhirnya akan seperti pada Tabel 7.
+|     | Country | Indicator | Gender | Age | Poverty_Rating | Residence | Maternal_Education | Year | Observation_Value |
+| --- | ------- | --------- | ------ | --- | -------------- | --------- | ------------------ | ---- | ----------------- |
+| 0   | 0       | 0         | 0      | 2   | 1              | 1         | 0                  | 3    | 85.7              |
+| 1   | 0       | 0         | 0      | 2   | 1              | 1         | 0                  | 6    | 80.9              |
+| 2   | 0       | 0         | 0      | 2   | 1              | 1         | 0                  | 8    | 78.7              |
+| 3   | 0       | 0         | 0      | 2   | 1              | 1         | 0                  | 10   | 79.3              |
+| 4   | 0       | 0         | 1      | 2   | 1              | 1         | 0                  | 3    | 83.6              |
+Tabel 7. Data Setelah LabelEncoder
 
 Setelah proses pelabelan selesai, langkah selanjutnya adalah melakukan Feature Selection. Tujuan dari Feature Selection adalah memilih fitur-fitur yang paling penting dari data untuk membangun model. Sebelumnya, kita perlu menentukan variabel independen (X) dan variabel dependen (Y) dari data.
 ```sh
@@ -394,23 +386,27 @@ X = nutri_indo[['Indicator', 'Residence',
                 'Poverty_Rating', 'Maternal_Education', 'Age', 'Gender']]
 y = nutri_indo['Observation_Value']
 ```
-Setelah variabel independen (X) dan variabel dependen (Y) ditentukan, langkah berikutnya adalah melakukan seleksi fitur. Tujuannya adalah untuk mengidentifikasi fitur-fitur yang paling penting dan relevan sehingga dapat dimasukkan ke dalam proses pemodelan yang bisa dilihat pada Gambar 17.
-![Gambar 17](assets/Gambar17.png)
-Gambar 17. Seleksi Fitur
+Setelah variabel independen (X) dan variabel dependen (Y) ditentukan, langkah berikutnya adalah melakukan seleksi fitur. Tujuannya adalah untuk mengidentifikasi fitur-fitur yang paling penting dan relevan sehingga dapat dimasukkan ke dalam proses pemodelan yang bisa dilihat pada Gambar 11.
+![Gambar 11](assets/Gambar11.png)
+Gambar 11. Seleksi Fitur
 
-Berdasarkan Gambar 17, terlihat bahwa variabel 'Indicator', 'Gender', dan 'Maternal_Education' memiliki fitur yang penting untuk proses pemodelan. Oleh karena itu, fitur selection yang dipilih adalah semua yang terkait dengan 'Indicator'.
+Berdasarkan Gambar 11, terlihat bahwa variabel 'Indicator', 'Gender', dan 'Maternal_Education' memiliki fitur yang penting untuk proses pemodelan. Oleh karena itu, fitur selection yang dipilih adalah semua yang terkait dengan 'Indicator'.
 
 Setelah mengetahui fitur-fitur yang penting, langkah selanjutnya adalah menyiapkan data untuk digunakan dalam pembuatan model. Data yang telah diidentifikasi fiturnya sebagai penting dibagi menjadi dua bagian, yaitu 80% data train dan 20% data test menggunakan library train_test_split dari scikit-learn.
 ```sh
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=2)
 ```
-![Gambar 18](assets/Gambar18.png)
-Gambar 18. Informasi Pembagian Data
 
-Langkah selanjutnya setelah dilakukan pembagian data adalah menerapkan StandardScaler. StandardScaler berguna untuk mengubah skala fitur-fitur pada dataset sehingga memiliki mean = 0 dan deviasi standar = 1. Hasil dari penerapan StandardScaller bisa dilihat pada Gambar 19.
-![Gambar 19](assets/Gambar19.png)
-Gambar 19. Hasil StandardScaller
+Langkah selanjutnya setelah dilakukan pembagian data adalah menerapkan StandardScaler. StandardScaler berguna untuk mengubah skala fitur-fitur pada dataset sehingga memiliki mean = 0 dan deviasi standar = 1. Hasil dari penerapan StandardScaller bisa dilihat pada Tabel 8.
+|       | Indicator | Residence | Poverty_Rating | Maternal_Education | Age       | Gender    |
+| ----- | --------- | --------- | -------------- | ------------------ | --------- | --------- |
+| 9869  | 1.055444  | 0.014595  | 0.042306       | -0.208468          | 0.286315  | 0.867255  |
+| 5038  | -0.831463 | 0.014595  | 0.042306       | -0.208468          | 1.186777  | 0.867255  |
+| 9601  | 0.740960  | 0.014595  | 0.042306       | -0.208468          | -0.276474 | 0.867255  |
+| 10320 | 1.369929  | 0.014595  | 0.042306       | -0.208468          | -0.501589 | 0.867255  |
+| 4873  | -0.831463 | 0.014595  | 0.042306       | -0.208468          | 0.961661  | -0.359403 |
+Tabel 8. Hasil StandardScaller
 
 Setelah dilakukan StandardScaler dan mengingat distribusi data yang tidak normal, beberapa algoritma yang dipilih untuk diuji dalam kasus stunting adalah:
 1. Linear Regression: Metode regresi linear sederhana yang mencoba menemukan hubungan linier antara variabel input dan output.
@@ -437,7 +433,7 @@ Dari tabel di atas, dapat disimpulkan bahwa Random Forest Regression dan Gradien
 Hasil yang didapat mulai terlihat bahwa model terbaik dimiliki oleh algoritma Random Forest Regression dan Gradient Boosting Regression karena nilai yang dihasilkan cukup identik. Namun, jika harus menentukan model yang terbaik berdasarkan angka, pilihan jatuh pada Gradient Boosting Regression
 
 Berikutnya, kita akan mencoba visualisasi hasil dari evaluasi yang kita lakukan agar semuanya terjasi dalam bentuk informasi.
-![Gambar 20](assets/Gambar20.png)
-Gambar 20. Visualisasi Predict Value
+![Gambar 12](assets/Gambar12.png)
+Gambar 12. Visualisasi Predict Value
 
 Sekian laporan Predictive Analysis, semoga informasi yang disajikan memberikan pemahaman yang mendalam mengenai prediksi tingkat risiko stunting pada anak berdasarkan faktor-faktor gizi dalam makanan ibu hamil. Evaluasi hasil menunjukkan bahwa model Random Forest Regression dan Gradient Boosting Regression menjadi pilihan terbaik dengan tingkat akurasi yang tinggi. Laporan ini diharapkan dapat memberikan kontribusi positif terhadap pemahaman dan penanganan masalah stunting.
