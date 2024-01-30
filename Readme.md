@@ -48,11 +48,7 @@ Untuk menjawab dari permasalahan sebelumnya, penulis mencoba membuat predictive 
 ## Data Understanding
 Pada kasus ini penelitian difokuskan pada dataset resmi UNICEF yang berisi data terkait kasus stunting. Dataset ini dapat diakses melalui [UNICEF](https://sdmx.data.unicef.org/databrowser/index.html?q=UNICEF:NUTRITION(1.0)).
 
-Meskipun dataset tersebut menyajikan beragam variabel, penelitian ini mempersempit fokusnya pada beberapa variabel tertentu untuk mengidentifikasi batasan dan distribusi data yang relevan.
-
-#### Data Wragling
-
-Karena dataset yang diperoleh bersifat raw atau belum terstruktur, langkah pertama yang perlu diambil adalah membersihkan data. Proses ini melibatkan tahapan pengolahan data kotor menjadi data yang bersih.
+Walaupun dataset tersebut mencakup berbagai variabel, penelitian ini memusatkan fokus pada beberapa variabel tertentu untuk mengidentifikasi batasan dan distribusi data yang relevan. Karena dataset bersifat mentah atau belum terstruktur, langkah awal yang harus diambil adalah melakukan pembersihan data. Proses ini melibatkan tahapan mengolah data yang kotor menjadi data yang bersih.
 
 Sebelumnya kita akan memuat dataset yang sudah kita peroleh menggunakkan library pandas.
 ```sh
@@ -94,16 +90,41 @@ Pada gambar 3, data masih berjenis string, sehingga data tersebut belum dapat di
 ![Gambar 4](assets/Gambar4.png)
 Gambar 4. Dataframe Dataset
 
-![DataFrame](assets/DataFrame.png)
-- Setelah datanya mudah dibaca, sekarang saatnya kita memeriksa apakah dataset yang telah kita bersihkan memiliki nilai duplikat dengan menggunakan fungsi df.duplicated().sum(). Setelah itu melihat apakah data memiliki nilai null dengan fungsi isnull().
-![Cek Dataset](assets/CekDataset.png)
-![Cek Info Data](assets/CekInfoData.png)
-- Berikutnya, kita akan menelusuri lebih jauh terhadap variabel Indicator. Dikarenakan banyak juga feature yang akan diambil maka saya memutuskan untuk mengambil variabel berelevansi atas literatur yang telah dilampirkan pada data diatas. Selebihnya bisa cek pada notebook.
-![Indicator Value](assets/DataIndicator.png)
-- Selanjutnya kita coba seleksi fitur variabel yang ada pada di Indicator.
-![Fitur Seleksi Indicator](assets/SeleksiFitur.png)
-- Setelah kita coba seleksi fitur, sekarang kita akan coba gabungkan beberapa tabel lainnya ke dalam dataframe baru.
-![Gabungan DataFrame](assets/GabunganDF.png)
+Sebelumnya, tipe data pada variabel fitur 'Year' masih dalam bentuk 'integer'. Proses konversi tipe data dilakukan menjadi 'datetime' dengan menggunakan fungsi `pd.to_datetime(df['Year'], format='%Y')`. Hal ini bertujuan untuk memungkinkan analisis tren kondisi yang sedang terjadi, perubahan tersebut menggunakan fungsi `df.info()` yang dapat dilihat pada Gambar 5.
+![Gambar 5](assets/Gambar5.png)
+Gambar 5. Informasi Data
+
+Pada Gambar 5, disajikan sebuah informasi variabel fitur, tipe data, dan jumlah data sebesar 10959.
+
+Setelah data menjadi lebih mudah dibaca, langkah selanjutnya adalah memeriksa apakah dataset yang telah dibersihkan memiliki nilai duplikat dengan menggunakan fungsi `df.duplicated().sum()`. Pada tahap ini, juga dilakukan evaluasi terhadap keberadaan nilai null dalam data menggunakan fungsi `df.isnull()` seperti pada Gambar 6
+![Gambar 6](assets/Gambar6.png)
+Gambar 6. Data Null dan Duplicated
+
+Seperti yang terlihat pada Gambar 6, data yang telah melalui tahap pemrosesan tidak menunjukkan adanya nilai *null* maupun *duplicated*.
+
+Selanjutnya, akan dilakukan penelusuran lebih lanjut terhadap variabel "Indicator". Pemilihan variabel ini didasarkan pada relevansinya dengan literatur yang telah dilampirkan pada data di atas diataranya:
+- Ever breastfed (0-23 months)
+- Continued breastfeeding (12-15 months)
+- Continued breastfeeding (12-23 months)
+- Continued breastfeeding (20-23 months)
+- Introduction to solid, semi-solid foods (6-8 months)
+- Minimum meal frequency (children aged 6 to 23 months)
+- Mean BMI-for-age
+- Height-for-age <-2 SD (stunting)
+- Weight-for-age <-2 SD (Underweight)
+- Weight-for-height <-2 SD (wasting)
+- Weight-for-height <-3 SD (severe wasting)
+- Weight-for-height >+2 SD (overweight)
+- Vitamin A Supplementation, two-dose coverage
+- Prevalence of low birth weight among new-borns
+
+Hasil seleksi fitur variabel yang terdapat pada kolom "Indicator" terlihat pada Gambar 7.
+![Gambar 7](assets/Gambar7.png)
+Gambar 7. Hasil Seleksi Fitur Indicator
+
+Pada Gambar 7 disajikan informasi dataset yang terbaru yang sudah dilakukan tahap seleksi fitur yang menghasilkan jumlah data di awal sebesar 10959 menjadi 2159. Hal ini juga didukung ketika menggunakan fungsi `.shape` yang tertera pada Gambar 8
+![Alt text](assets/Gambar8.png)
+
 ![Nutrisi Indonesia](assets/NutriIndo.png)
 - Berikutnya, mencari informasi tentang dataset mengenai jumlah baris data,kolom data terhadap DataFrame baru. Saya menggunakan fungsi shape().
 ![Jumlah Data](assets/JumlahData.png)
