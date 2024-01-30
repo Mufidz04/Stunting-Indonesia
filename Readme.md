@@ -126,17 +126,30 @@ Pada Gambar 7 disajikan informasi dataset yang terbaru yang sudah dilakukan taha
 ![Gambar 8](assets/Gambar8.png)
 Gambar 8. Jumlah Dataframe Dataset Terbaru
 
-![Nutrisi Indonesia](assets/NutriIndo.png)
-- Berikutnya, mencari informasi tentang dataset mengenai jumlah baris data,kolom data terhadap DataFrame baru. Saya menggunakan fungsi shape().
-![Jumlah Data](assets/JumlahData.png)
-- Selanjutnya kita coba manipulasi string kembali terhadap variabel - variabel diatas agar mudah dibaca.
-Residence:
-![Residence](assets/Residence.png)
-Education:
-![Education](assets/Pendidikan.png)
-Poverty:
-![Poverty](assets/Kekayaan.png)
-![Datafrane Info Terbaru](assets/DataInfoNew.png)
+Karena masih terdapat nilai yang mengindikasikan total, dilakukan manipulasi string lagi untuk mendapatkan informasi yang lebih terstruktur, mulai dari `Residence`, `Maternal_Education`, hingga `Poverty_Rating`.
+
+Value dari `Residence` meliputi *Total*, *Rural*, *Urban*. Nilai total akan diubah menjadi *Suburban*, mengikuti informasi dari tempat tinggal di Indonesia agar distribusi data menjadi lebih terukur. Hasil pemrosesan tersebut bisa dilihat pada Gambar 9.
+![Gambar 9](assets/Gambar9.png)
+Gambar 9. Distrubusi Data Residence
+
+Berikutnya value dari `Maternal_Education` pun akan dikelompokkan menjadi 4 subset dari 7 yaitu:
+1. *No education*
+2. *Primary education*
+3. *Secondary education*
+4. *Tertiary education*
+
+Hasil pemrosesan tersebut juga dapat dilihat pada Gambar 10.
+![Gambar 10](assets/Gambar10.png)
+Gambar 10. Distribusi Data Maternal Education
+
+Selanjutnya pada tahap `Poverty_Rating` sebelum dilakukannya analisis terhadap variabel antar variabel pun akan dikelempokkan menjadi 3 kategori yaitu *Poor*, *Middle Class*, *Rich*. Hasil tersebut dapat dilihat pada Gambar 11.
+![Gambar 11](assets/Gambar11.png)
+Gambar 11. Distribusi Data Poverty Rating
+
+Terakhir kita akan menyimpan data dataset yang baru dengan menggunakan code dibawah ini
+```sh
+nutri_indo.to_csv('Nutrition_Indonesia.csv', index=False)
+```
 
 #### Exploratory Data Analysis and Vizualizations
 
