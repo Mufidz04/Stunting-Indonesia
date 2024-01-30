@@ -50,17 +50,6 @@ Pada kasus ini penelitian difokuskan pada dataset resmi UNICEF yang berisi data 
 
 Meskipun dataset tersebut menyajikan beragam variabel, penelitian ini mempersempit fokusnya pada beberapa variabel tertentu untuk mengidentifikasi batasan dan distribusi data yang relevan.
 
-### Variabel-variabel pada UNICEF Nutrion dataset adalah sebagai berikut:
-- 'REF_AREA:Geographic area' : Merupakan data geografis yang disajikan pada dataset dalam kasus ini area 'Indonesia' menjadi target.
-- 'INDICATOR:Indicator' : Merupakan data yang mencakup sejumlah indikator yang beragam terkait dengan status gizi anak, mencakup aspek-aspek seperti pemberian ASI, pertumbuhan fisik, pola makan, dan cakupan suplementasi. Indikator ini melibatkan kategorisasi seperti tingkat stunting, wasting, overweight, serta informasi terkait dengan praktik pemberian makanan dan gizi sejak lahir.
-- 'SEX:Sex' : Merupakan data yang mengidentifikasi jenis kelamin individu dan mencakup tiga kategori: 'Male', 'Female', dan 'Total'. Kategori 'Total' mungkin merujuk pada total keseluruhan populasi atau total dari suatu kelompok tertentu.
-- 'AGE:Current age' : Merupaan data yang mencerminkan informasi tentang usia individu dalam dataset. Variabel ini dirancang untuk menggambarkan variasi usia di antara subjek data. Analisis terhadap variabel ini dapat memberikan wawasan tentang distribusi usia dalam dataset, memungkinkan identifikasi tren atau pola yang mungkin berkaitan dengan kelompok usia tertentu
-- 'WEALTH_QUINTILE:Wealth Quintile' : Merupakan data yang mencakup informasi tentang klasifikasi kekayaan individu atau rumah tangga dalam dataset. Kelompok kekayaan ini dibagi menjadi beberapa kategori atau quintile, mencerminkan tingkat kekayaan yang berbeda.
-- 'RESIDENCE:Residence' : Merupakan data yang mencakup informasi tentang lokasi tempat tinggal individu atau rumah tangga dalam dataset. Variabel ini mungkin menggambarkan beragam tipe tempat tinggal atau wilayah geografis tanpa merinci setiap kategori secara spesifik.
-- 'MATERNAL_EDU_LVL:Mother\'s Education Level' : Merupakan data yang memuat informasi mengenai tingkat pendidikan ibu dari individu atau anak dalam dataset. Variabel ini mungkin mengelompokkan tingkat pendidikan menjadi beberapa kategori umum.
-- 'TIME_PERIOD:Time period' : Merupakan data yang mencakup informasi tentang periode waktu yang terkait dengan data dalam dataset. Variabel ini mungkin mencerminkan rentang waktu atau tanggal pengumpulan data tanpa merinci periode waktu secara spesifik.
-- 'OBS_VALUE:Observation Value' : Merupakan data yang memuat informasi tentang nilai observasi yang terkait dengan data dalam dataset. Variabel ini mungkin mencakup beragam nilai dari 0-100.
-
 #### Data Wragling
 
 Karena dataset yang diperoleh bersifat raw atau belum terstruktur, langkah pertama yang perlu diambil adalah membersihkan data. Proses ini melibatkan tahapan pengolahan data kotor menjadi data yang bersih.
@@ -74,20 +63,37 @@ Hasil dari pemrosesan code diatas dapat dilihat pada Gambar 1
 ![Gambar 1](assets/Gambar1.png)
 Gambar 1. Data Loading
 
-Pada Gambar 1 disajikan data yang berisikan dataset asli sebelum dilakukan tahap pengolahan data
+Pada Gambar 1 disajikan data yang berisikan dataset asli sebelum dilakukan tahap pengolahan data. Setelah dimuat, terlihat bahwa data dari UNICEF masih dalam kondisi yang perlu diperbaiki. Selanjutnya, akan dilakukan penelusuran kondisi data menggunakan fungsi info().
+```sh
+data.info()
+```
+![Gambar 2](assets/Gambar2.png)
+Gambar 2. Data Information
 
-TODO:Revision Data Understanding, Data Preparation, Modeling, Evaluation, Struktur laporan dan penulisan.
-- Setelah dimuat maka terlihat bahwa data yang diperoleh dari UNICEF masih berbentuk kondisi yang tidak kita inginkan, selanjutnya maka kita coba telusuri dengan menggunakan fungsi info().
-![Data Info](assets/DataInfo.png)
-- Dikarenakan banyaknya feature variabel maka sesuai dengan kondisi di atas, kita hanya akan menggunakan variabel tertentu agar scope yang kita telusuri sesuai dan tida melabar kemana - mana. Dalam penentuan variabel yang akan diekstraksi, saya menggunakan fungsi parameter dari pandas yaitu chunksize yang merupakan kondisi yang paling cocok dari kasus ini dikarenakan dataset kita yang cukup besar dan complex sehingga kita memerlukan potongan - potongan kecil untuk dalam pemrosesan.
-![Chunk](assets/Chunk.png)
-- Setelah di define menggunakan chunk, selanjutnya kita akan mencoba mengambil variabel yang akan kita pakai sesuai dengan diatas.
-![Ekstraksi Kolom](assets/EkstraksiKolom.png)
-- Tidak lupa juga karena penggambaran data seperti yang dilihat pada Data Loading sangat berantakan, maka disini saya juga mencoba untuk string manipulation agar terlihat agar rapih. Prosesnya seperti berikut ini
-![String Manipulation](assets/StringManipulation.png)
-- Maka akan hasilnya seperti ini, terlihat bukan datanya lebih readable?
-![Result String](assets/ResultString.png)
-- Karena data setelah ekstraksi masih dalam bentuk string, sekarang kita rubah menjadi dataframe agar terlihat perbedaannya
+Berdasarkan Gambar 2, disajikan sumber informasi data yang mencakup jumlah kolom, tipe data, dan besaran data pada setiap kolomnya.
+
+Dengan banyaknya variabel fitur, hanya akan dipilih beberapa variabel tertentu agar cakupan yang ditelusuri sesuai dan tidak terlalu meluas. Dalam menentukan variabel yang akan diekstraksi, akan menggunakan parameter fungsi dari pandas, yaitu *chunksize*. Sesuai dengan kondisi kasus ini, di mana dataset cukup besar dan kompleks, langkah ini perlu dilakukan untuk memproses data secara bertahap, sehingga memastikan hasilnya tidak memakan waktu yang terlalu lama. Variabel fitur yang akan diekstraksi akan dilakukan manipulasi string agar data lebih mudah dibaca, meliputi :
+
+
+| Feature Selection                         | Result             | Data Understanding                                                                                                                                                                                                                                                                                                                                                       |
+| ----------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| REF_AREA:Geographic area                  | Country            | `Merupakan data geografis yang disajikan pada dataset dalam kasus ini area 'Indonesia' menjadi target.`                                                                                                                                                                                                                                                                  |
+| INDICATOR:Indicator                       | Indicator          | `Merupakan data yang mencakup sejumlah indikator yang beragam terkait dengan status gizi anak, mencakup aspek-aspek seperti pemberian ASI, pertumbuhan fisik, pola makan, dan cakupan suplementasi. Indikator ini melibatkan kategorisasi seperti tingkat stunting, wasting, overweight, serta informasi terkait dengan praktik pemberian makanan dan gizi sejak lahir.` |
+| SEX:Sex                                   | Gender             | `Merupakan data yang mengidentifikasi jenis kelamin individu dan mencakup tiga kategori: 'Male', 'Female', dan 'Total'. Kategori 'Total' mungkin merujuk pada total keseluruhan populasi atau total dari suatu kelompok tertentu.`                                                                                                                                       |
+| AGE:Current age                           | Age                | `Merupakan data yang mencerminkan informasi tentang usia individu dalam dataset. Variabel ini dirancang untuk menggambarkan variasi usia di antara subjek data. Analisis terhadap variabel ini dapat memberikan wawasan tentang distribusi usia dalam dataset, memungkinkan identifikasi tren atau pola yang mungkin berkaitan dengan kelompok usia tertentu`            |
+| WEALTH_QUINTILE:Wealth Quintile           | Poverty_Rating     | `Merupakan data yang mencakup informasi tentang klasifikasi kekayaan individu atau rumah tangga dalam dataset. Kelompok kekayaan ini dibagi menjadi beberapa kategori atau quintile, mencerminkan tingkat kekayaan yang berbeda.`                                                                                                                                        |
+| RESIDENCE:Residence                       | Residence          | `Merupakan data yang mencakup informasi tentang lokasi tempat tinggal individu atau rumah tangga dalam dataset. Variabel ini mungkin menggambarkan beragam tipe tempat tinggal atau wilayah geografis tanpa merinci setiap kategori secara spesifik.`                                                                                                                    |
+| MATERNAL_EDU_LVL:Mother's Education Level | Maternal_Education | `Merupakan data yang memuat informasi mengenai tingkat pendidikan ibu dari individu atau anak dalam dataset. Variabel ini mungkin mengelompokkan tingkat pendidikan menjadi beberapa kategori umum.`                                                                                                                                                                     |
+| TIME_PERIOD:Time period                   | Year               | `Merupakan data yang mencakup informasi tentang periode waktu yang terkait dengan data dalam dataset. Variabel ini mungkin mencerminkan rentang waktu atau tanggal pengumpulan data tanpa merinci periode waktu secara spesifik.`                                                                                                                                        |
+| OBS_VALUE:Observation Value               | Observation_Value  | `Merupakan data yang memuat informasi tentang nilai observasi yang terkait dengan data dalam dataset. Variabel ini mungkin mencakup beragam nilai dari 0-100.`                                                                                                                                                                                                           |
+
+![Gambar 3](assets/Gambar3.png)
+Gambar 3. String Variable Feature
+
+Pada gambar 3, data masih berjenis string, sehingga data tersebut belum dapat diolah lebih lanjut. Oleh karena itu, setelah dilakukan manipulasi string pada variabel fitur, langkah berikutnya adalah mencoba mengonversi data ke dalam bentuk dataframe agar memungkinkan pemrosesan lebih lanjut. Berikut hasil konversi kedalam bentuk dataframe bisa dilihat pada Gambar 4.
+![Gambar 4](assets/Gambar4.png)
+Gambar 4. Dataframe Dataset
+
 ![DataFrame](assets/DataFrame.png)
 - Setelah datanya mudah dibaca, sekarang saatnya kita memeriksa apakah dataset yang telah kita bersihkan memiliki nilai duplikat dengan menggunakan fungsi df.duplicated().sum(). Setelah itu melihat apakah data memiliki nilai null dengan fungsi isnull().
 ![Cek Dataset](assets/CekDataset.png)
