@@ -151,13 +151,26 @@ Terakhir kita akan menyimpan data dataset yang baru dengan menggunakan code diba
 nutri_indo.to_csv('Nutrition_Indonesia.csv', index=False)
 ```
 
-#### Exploratory Data Analysis and Vizualizations
+## Data Preparation
 
-Pada tahap ini saya mencoba mencari tahu apakah tedapat Outliers pada data yang setelah melakukan aksi yang diatas, serta mencari korelasi yang antar variable, dan juga melakukan coba analisis sederhana yang mencakup Univariate, Bivariate dan Multivariate. 
+Teknik data preparation yang telah dilakukan pada tahap Data Understanding mencakup pembersihan data (Cleaning Data), pemilihan fitur (Feature Selection), manipulasi *string*, dan penyimpanan data. Pembersihan data dilakukan untuk mengatasi penamaan yang nilai-nilai yang tidak valid dan mengelola nilai yang hilang. Pemilihan fitur dilakukan berdasarkan relevansi dan kebutuhan analisis untuk memfokuskan perhatian pada variabel yang penting. Manipulasi string diterapkan untuk merapikan dan mengekstrak informasi yang dibutuhkan dari variabel dengan tipe data string. Terakhir, data disimpan untuk memastikan kelancaran analisis di tahap berikutnya. Selanjutnya persiapan data menciptakan dasar yang solid untuk tahap selanjutnya, yaitu Exploratory Data Analysis (EDA) dan Visualisasi. EDA dan Visualisasi akan membantu dalam menjelajahi lebih lanjut data, mengidentifikasi distribusi, mengevaluasi hubungan antar variabel, dan mengidentifikasi tren atau pola yang mungkin muncul dalam dataset. Pada tahap ini, dilakukan pengecekan keberadaan outliers dalam data setelah proses persiapan data. Selain itu, dilakukan analisis korelasi antar variabel untuk memahami hubungan di antara mereka. Proses ini melibatkan eksplorasi statistik deskriptif dan visualisasi data untuk mengidentifikasi pola dan anomali. Pada tahap ini, dilakukan pengecekan outliers dan analisis korelasi antar variabel. Proses ini melibatkan statistik deskriptif, visualisasi data, serta analisis univariat, bivariat, dan multivariat untuk memahami karakteristik dan hubungan variabel. Tujuannya adalah mendapatkan wawasan yang berharga untuk tahap analisis data selanjutnya.
 
-Sebelum masuk lebih jauh, kita akan mencoba untuk melihat persebaran datanya terlebih dahulu. Dari hasil yang bisa didapatkan bahwa data yang diperoleh pendistribusiannya tidak normal lebih mengarah Right-Skewed or Positive-Skewed. 
-![Distribusi Data](assets/DistribusiData.png)
-Dari gambar diatas didapati bahwa tidak adanya outliers yang menandakan bahwa data kita tidak masuk ke step khusus untuk menangani outliers. Dilakukan juga Univariate analysis terhadap feature yang ada lebih lengkapnya bisa di cek pada collab EDA
+Sebelum melanjutkan analisis, akan dilihat terlebih dahulu persebaran data. Hasilnya menunjukkan bahwa distribusi data tidak normal dan cenderung Right-Skewed atau Positive-Skewed yang bisa dilihat pada Gambar 12.
+![Gambar 12](assets/Gambar12.png)
+Gambar 12. Grafik Distribusi Data
+Terlihat dari Gambar 12 bahwa tidak terdapat outliers, menunjukkan bahwa data tidak memerlukan langkah khusus untuk menangani outliers.
+
+Berikutnya kita coba analisis persebaran data categorical yang meliputi `Residence`, `Poverty_Rating`, dan `Maternal_Education`.
+
+Dapat dilihat pada Gambar 13, persebaran data `Residence` di Indonesia masyarakat lebih banyak bertempat tinggal pada 'Suburban'.
+![Gambar 13](assets/Gambar13.png)
+Gambar 13. Grafik Persebaran Data Residence
+Diikuti juga pada `Poverty_Rating`, didapati persebaran data mayoritas tidak mempunyai kekayaan yang terdapat pada Gambar 14
+![Gambar 14](assets/Gambar14.png)
+Gambar 14. Grafik Persebaran Data Poverty Rating
+Terakhir untuk pendidikannya sendiri di dominasi oleh masyarakat yang tidak mempunyai pendidikan secara khusus. Hal ini bisa dilihat dari persebaran data `Maternal_Education` pada Gambar 14.
+![Gambar 15](assets/Gambar15.png)
+Gambar 15. Grafik Persebaran Data Maternal Education
 
 Selanjutnya setelah diketahui distribusi data tidak adanya outliers, maka kita bisa lanjutkan step berikutnya yaitu Bivariate analysis Indicator terhadap Maternal Education. Fokus utamanya terhadap kasus stunting.
 ![HeatMap Pendidikan](assets/HeatMapPendidikan.png)
@@ -168,8 +181,6 @@ Dari grafik bar diatas juga bahwa Stunting sendiri terjadi di kalangan masyaraka
 Berikutnya, kita akan mencoba Bivariate analysis Indicator terhadap Poverty_Rating atau kekayaan. Pada analisis kali ini juga didapatkan data bahwa ternyata rata - rata yang mengalami Stunting berada pada masyarakat yang berekonomi rendah. Bisa dilihat pada gambar dibawah:
 ![Bar Chart Kekayaan](assets/BarChartKekayaan.png)
 Dari situ bisa disimpulkan bahwa masyarakat yang berekonomi rendah berpengaruh juga kedalam kasus pendidikan juga Stunting.
-
-## Data Preparation
 Sebelum kita masuk ke dalam modeling tentunya ada yang harus dilakukan terlebih dahulu yaitu mengkonversi data yang kita punya kedalam numeric. Tujuannya adalah agar mesin dapat mengenali mengenai data kita, pada laporan proyek ini dibuat saya membuat persebaran data train sebesar 80% dan 20% sebagai data test.
 
 Berikutnya, step yang akan dilakukan adalah melabeli data yang kita punya dengan library bawaan dari sckit-learn yaitu LabelEncoder. LabelEncoder dipilih dikarenakan banyaknya data yang bersifat categorical sehingga akan memudahkan dalam pre-procesing data dalam sekali jalan.
