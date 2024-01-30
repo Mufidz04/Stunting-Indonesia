@@ -217,6 +217,24 @@ Dari Gambar 19, dapat ditarik beberapa informasi penting:
    2. Solid_Food dengan BMI_Age menunjukkan korelasi yang tinggi sebesar 0.8 menunjukkan bahwa ada kecenderungan di mana peningkatan konsumsi makanan padat berkaitan erat dengan peningkatan nilai indeks massa tubuh berdasarkan usia 
    3. Solid_Food dengan Meal_Frequency pun tinggi 0.92 menunjukkan bahwa ketika konsumsi makanan padat meningkat atau menurun, frekuensi makan juga mengikuti pola yang serupa. Dengan kata lain, adanya nilai yang tinggi pada Solid_Food cenderung berkorelasi positif dengan peningkatan frekuensi makan
 
+#### Multivariate Analysis
+
+Multivariate Analysis dilakukan untuk memahami tren khususnya pada kasus Stunting. Analisis ini juga mencakup tren pada kasus Underweight, Overweight, dan Wasting.
+![Gambar 20](assets/Gambar20.png)
+Gambar 20. Trend Stunting Indonesia
+
+Berdasarkan Gambar 20, trend yang terjadi di Indonesia Stunting masih mencapai titik tertinggi dibandingkan tahun tahun sebelumnya. Selanjutnya terdapat trend Wasting yang dapat dilihat pada Gambar 21.
+![Gambar 21](assets/Gambar21.png)
+Gambar 21. Trend Wasting Indonesia
+
+Pada Gambar 21, trend yang terjadi sudah sempet menurun namun dilihat dari garis yang membentang di level sekarang kategorinya masih tinggi. Berikutnya adapula trend Overweight yang dapat dilihat pada Gambar 22.
+![Gambar 22](assets/Gambar22.png)
+Gambar 22. Trend Overweight Indonesia
+
+Jika dilihat pada Gambar 22, indeks overweight sudah cukup menurun tetapi masih belum bisa dikatakan aman. Dan terakhir terdapat trend underweight yang dapat dilihat pada Gambar 23.
+![Gambar 23](assets/Gambar22.png)
+Gambar 23. Trend Underweight Indonesia
+
 
 ## Modeling
 
