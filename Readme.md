@@ -164,12 +164,15 @@ Berikutnya kita coba analisis persebaran data categorical yang meliputi `Residen
 
 Dapat dilihat pada Gambar 13, persebaran data `Residence` di Indonesia masyarakat lebih banyak bertempat tinggal pada 'Suburban'.
 ![Gambar 13](assets/Gambar13.png)
+
 Gambar 13. Grafik Persebaran Data Residence
 Diikuti juga pada `Poverty_Rating`, didapati persebaran data mayoritas tidak mempunyai kekayaan yang terdapat pada Gambar 14
 ![Gambar 14](assets/Gambar14.png)
+
 Gambar 14. Grafik Persebaran Data Poverty Rating
 Terakhir untuk pendidikannya sendiri di dominasi oleh masyarakat yang tidak mempunyai pendidikan secara khusus. Hal ini bisa dilihat dari persebaran data `Maternal_Education` pada Gambar 14.
 ![Gambar 15](assets/Gambar15.png)
+
 Gambar 15. Grafik Persebaran Data Maternal Education
 
 Selanjutnya setelah diketahui distribusi data tidak adanya outliers, maka kita bisa lanjutkan step berikutnya yaitu Bivariate analysis Indicator terhadap Maternal Education. Fokus utamanya terhadap kasus stunting.
