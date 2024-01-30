@@ -215,7 +215,7 @@ Tabel 4. Informasi Data
 
 Pada Tabel 4, disajikan sebuah informasi variabel fitur, tipe data, dan jumlah data sebesar 10959.
 
-Setelah data menjadi lebih mudah dibaca, langkah selanjutnya adalah memeriksa apakah dataset yang telah dibersihkan memiliki nilai duplikat dengan menggunakan fungsi `df.duplicated().sum()`. Pada tahap ini, juga dilakukan evaluasi terhadap keberadaan nilai null dalam data menggunakan fungsi `df.isnull()` seperti pada Gambar 6
+Setelah data menjadi lebih mudah dibaca, langkah selanjutnya adalah memeriksa apakah dataset yang telah dibersihkan memiliki nilai duplikat dengan menggunakan fungsi `df.duplicated().sum()`. Pada tahap ini, juga dilakukan evaluasi terhadap keberadaan nilai null dalam data menggunakan fungsi `df.isnull()` seperti pada Gambar 1
 ![Gambar 1](assets/Gambar1.png)
 Gambar 1. Data Null dan Duplicated
 
@@ -237,7 +237,7 @@ Selanjutnya, akan dilakukan penelusuran lebih lanjut terhadap variabel "Indicato
 - Vitamin A Supplementation, two-dose coverage
 - Prevalence of low birth weight among new-borns
 
-Hasil seleksi fitur variabel yang terdapat pada kolom "Indicator" terlihat pada Gambar 5.
+Hasil seleksi fitur variabel yang terdapat pada kolom "Indicator" terlihat pada Tabel 5.
 |       | Country   | Indicator                              | Gender | Age                 | Poverty_Rating | Residence | Maternal_Education | Year       | Observation_Value |
 | ----- | --------- | -------------------------------------- | ------ | ------------------- | -------------- | --------- | ------------------ | ---------- | ----------------- |
 | 0     | Indonesia | Continued breastfeeding (12-15 months) | Female | 12 to 15 months old | Total          | Total     | Total              | 2003-01-01 | 85.7              |
@@ -257,8 +257,8 @@ Pada Tabel disajikan informasi dataset yang terbaru yang sudah dilakukan tahap s
 
 Karena masih terdapat nilai yang mengindikasikan total, dilakukan manipulasi string lagi untuk mendapatkan informasi yang lebih terstruktur, mulai dari `Residence`, `Maternal_Education`, hingga `Poverty_Rating`.
 
-Value dari `Residence` meliputi *Total*, *Rural*, *Urban*. Nilai total akan diubah menjadi *Suburban*, mengikuti informasi dari tempat tinggal di Indonesia agar distribusi data menjadi lebih terukur. Hasil pemrosesan tersebut bisa dilihat pada Gambar 9.
-![Gambar 2](assets/Gambar9.png)
+Value dari `Residence` meliputi *Total*, *Rural*, *Urban*. Nilai total akan diubah menjadi *Suburban*, mengikuti informasi dari tempat tinggal di Indonesia agar distribusi data menjadi lebih terukur. Hasil pemrosesan tersebut bisa dilihat pada Gambar 2.
+![Gambar 2](assets/Gambar2.png)
 Gambar 2. Distribusi Data Residence
 
 Berikutnya value dari `Maternal_Education` pun akan dikelompokkan menjadi 4 subset dari 7 yaitu:
@@ -384,7 +384,7 @@ Selanjutnya, langkah yang diambil adalah memberikan label pada data menggunakan 
 ![Gambar 15](assets/Gambar15.png)
 Gambar 15. Transformasi Numeric
 
-Setelah mengalami transformasi seperti yang terlihat pada Gambar 24, maka hasil akhirnya akan seperti pada Gambar 16.
+Setelah mengalami transformasi seperti yang terlihat pada Gambar 15, maka hasil akhirnya akan seperti pada Gambar 16.
 ![Gambar 16](assets/Gambar16.png)
 Gambar 16. Data Setelah LabelEncoder
 
@@ -409,7 +409,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 Gambar 18. Informasi Pembagian Data
 
 Langkah selanjutnya setelah dilakukan pembagian data adalah menerapkan StandardScaler. StandardScaler berguna untuk mengubah skala fitur-fitur pada dataset sehingga memiliki mean = 0 dan deviasi standar = 1. Hasil dari penerapan StandardScaller bisa dilihat pada Gambar 19.
-![Gambar 19](assets/Gambar28.png)
+![Gambar 19](assets/Gambar19.png)
 Gambar 19. Hasil StandardScaller
 
 Setelah dilakukan StandardScaler dan mengingat distribusi data yang tidak normal, beberapa algoritma yang dipilih untuk diuji dalam kasus stunting adalah:
